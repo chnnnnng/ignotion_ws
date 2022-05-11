@@ -1,0 +1,39 @@
+#### Ignotion工作空间配置文件
+
+### 站点信息
+# 站点名称
+SITE_NAME: CHNG Ignotion
+# 站点描述
+SITE_DESCRIPTION: A Handy Markdown Blog.
+# 站点版权信息
+SITE_COPYRIGHT: Copyright ©2022 CHNG. 苏ICP备19058878号.
+
+### 作者信息
+# 作者姓名
+AUTHOR_NAME: Chen.Y
+# 作者邮箱
+AUTHOR_EMAIL: 596552206@qq.com
+# 作者介绍
+AUTHOR_INTRODUCTION: A student in Zhe Jiang University of Technology
+
+### 本地目录设置
+# 输出文件目录，该目录存放Ignotion生成的HTML文档及样式
+OUTPUT_DIR: HTML
+# 资源文件目录，该目录存放Ignotion主题目录，以及用户的资源文件（如图片等）
+RESOURCE_DIR: RES
+
+### Ignotion主题
+# 主题位于 RESOURCE_DIR/theme/
+THEME: retro
+
+
+### 远程目录设置
+# 远程SSH主机，22端口
+# 如：adam@yourhost
+REMOTE_USER_AT_ADDR: root@chng.fun
+# 远程目录，本地的OUTPUT_DIR和RESOURCE_DIR将被上传至此处
+# 如：/home/adam/ignotion_ws
+REMOTE_WS: /root/ignotion_ws
+# SSH私钥
+# 如：./my_private_key
+REMOTE_PRIVATE_KEY: ./ignotion-chng-fun-mac

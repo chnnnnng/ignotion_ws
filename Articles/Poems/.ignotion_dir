@@ -1,0 +1,16 @@
+# Ignotion 工作目录
+# Ignotion的文章存放在目录中，工作空间是根目录。 通过合理安排目录，你可以让你的文章井然有序！
+
+# 一个目录具有三个名字，分别为：
+#   - Directory name，即文件夹真实的名字
+#   - Display name, 即在文章或导航栏中显示的名字
+#   - Route name，即在URL中路由时使用的名字
+
+# 对于根目录，仅Display name有效
+# 若根目录的 .ignotion_dir文件缺省，将使用 "/" 作为Display name
+
+# 以下为.ignotion_dir内容
+
+DIR_DISPLAY_NAME: 诗歌
+
+DIR_ROUTE_NAME: poem
