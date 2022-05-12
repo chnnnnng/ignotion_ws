@@ -1,6 +1,7 @@
 ---
 title: 语法测试
 template: page
+TOC: true
 ---
 ## 起源
 

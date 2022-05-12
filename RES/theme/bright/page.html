@@ -4,15 +4,19 @@
     <meta charset="utf-8">
     <title>{{ __TITLE__ }} | {{ __SITE_NAME__ }}</title>
     <meta name='description' content="{{ __SITE_DESCRIPTION__ }}">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <meta name="viewport" content="user-scalable=no">
+    <link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.8/theme-chalk/index.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ __ROOT__ }}style.css">
 </head>
 <body>
-    <div id="ignotion-header""><div><h1>{{ __TITLE__ }}</h1></div></div>
     <div id="ignotion-main">
         <el-backtop target="#ignotion-main"></el-backtop>
+        <div id="ignotion-sider-toc">
+            {{ __TOC__ }}
+        </div>
         <div id="ignotion-content">
             <el-backtop target="#ignotion-content"></el-backtop>
+            <h1 id="ignotion-header">{{ __TITLE__ }}</h1>
             {{ __CONTENT__ }}
         </div>
         <div id="ignotion-sider">
@@ -25,11 +29,92 @@
         </div>
     </div>
 </body>
-<script src="https://cdn.bootcss.com/vue/2.5.2/vue.min.js"></script>
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="{{ __ROOT__ }}vue.min.js"></script>
+<script src="{{ __ROOT__ }}vue-scrollto.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.8/index.min.js"></script>
+<!-- <script src="{{ __ROOT__ }}element-ui.js"></script> -->
 <script>
-    new Vue({
-      el: '#ignotion-main'
+    var app = new Vue({
+        el: '#ignotion-main',
+        props: {},
+        data: {
+            mainHeight:0,
+            activeIndex:[],
+            scrollOptions:{
+                container: "#ignotion-content", //滚动的容器
+                duration: 500, //滚动时间
+                easing: "ease", //缓动类型
+                offset: -50, // 滚动时应应用的偏移量。此选项接受回调函数
+                force: true, // 是否应执行滚动
+                cancelable: true, // 用户是否可以取消滚动
+                onStart: false, // 滚动开始时的钩子函数
+                onDone: false, // 滚动结束时候的钩子函数
+                onCancel: false, // 用户取消滚动的钩子函数
+                x: false, // 是否要在x轴上也滚动
+                y: true    // 是否要在y轴上滚动
+            }
+        },
+        created: function () {
+    
+        },
+        mounted: function(){
+            document.querySelector("#ignotion-content").addEventListener('scroll', this.onScroll)
+            this.mainHeight = document.querySelector('#ignotion-main').clientHeight
+            const TOCdom = document.querySelectorAll("#ignotion-sider-toc>.ignotion-toc>a")
+            TOCdom.forEach(item => {
+                item.setAttribute("target",item.getAttribute("href"));
+                item.removeAttribute("href");
+                item.setAttribute("onclick","app.smoothTo(this)")
+            })
+            this.onScroll()
+        },
+        destroy: function(){       
+            document.querySelector("#ignotion-content").removeEventListener('scroll', this.onScroll)
+        },
+        methods: {
+            smoothTo(ele){
+                let tar = ele.getAttribute("target").substr(1)
+                VueScrollTo.scrollTo(document.getElementById(tar), this.scrollOptions)
+            },
+            onScroll() {
+                // 获取所有锚点元素
+                const navContents = document.querySelectorAll('#ignotion-content .ignotion_hx')
+                // 所有锚点元素的 offsetTop
+                const offsetTopArr = []
+                navContents.forEach(item => {
+                    offsetTopArr.push(item.offsetTop)
+                })
+                offsetTopArr.push(offsetTopArr[offsetTopArr.length-1]+this.mainHeight)
+                // 获取当前文档流的 scrollTop
+                const scrollTop = document.querySelector("#ignotion-content").scrollTop
+                // 定义当前点亮的导航下标
+                let temp = [];
+                let cnt = 0;
+                for (let n = 0; n < offsetTopArr.length-1; n++) {
+                    if(offsetTopArr[n] > scrollTop && offsetTopArr[n] < scrollTop+this.mainHeight){
+                        temp[n]=1;
+                        cnt++;
+                    }else{
+                        temp[n]=0;
+                    }
+                }
+                if(cnt!=0){
+                    for(let i=0;i<temp.length;i++) this.activeIndex[i]= temp[i];
+                }
+                this.setTOC()
+            },
+    
+            setTOC(){
+                const TOCdom = document.querySelectorAll("#ignotion-sider-toc>.ignotion-toc>a")
+                for(let i=0;i<this.activeIndex.length;i++){
+                    if(this.activeIndex[i]==1){
+                        TOCdom[i].style.borderLeft = "1rem solid rgb(195, 39, 43)";
+                    }else{
+                        TOCdom[i].style.borderLeft = "1rem solid #e9e7ef";
+                    }
+                }
+            }
+        }
     })
-  </script>
-</html>
+      </script>
+    </html>

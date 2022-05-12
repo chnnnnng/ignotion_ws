@@ -1,3 +1,8 @@
+---
+TOC: enabled
+---
+[TOC]
+
 ## 开始之前
 
 欢迎使用Ignotion。
