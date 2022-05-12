@@ -24,7 +24,7 @@ RESOURCE_DIR: RES
 
 ### Ignotion主题
 # 主题位于 RESOURCE_DIR/theme/
-THEME: retro
+THEME: bright
 
 
 ### 远程目录设置

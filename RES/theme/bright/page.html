@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ __TITLE__ }} | {{ __SITE_NAME__ }}</title>
+    <meta name='description' content="{{ __SITE_DESCRIPTION__ }}">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="{{ __ROOT__ }}style.css">
+</head>
+<body>
+    <div id="ignotion-header""><div><h1>{{ __TITLE__ }}</h1></div></div>
+    <div id="ignotion-main">
+        <el-backtop target="#ignotion-main"></el-backtop>
+        <div id="ignotion-content">
+            <el-backtop target="#ignotion-content"></el-backtop>
+            {{ __CONTENT__ }}
+        </div>
+        <div id="ignotion-sider">
+            {{ __NAVIGATION__ }}
+            <div id="ignotion-author-time-copyright">
+                <div>Edit by <a href="mailto:{{ __AUTHOR_EMAIL__ }}">{{ __AUTHOR_NAME__ }}</a></div>
+                <div><span>{{ __PAGE_TIME__ }}</span></div>
+                <small>{{ __SITE_COPYRIGHT__ }}</small>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.5.2/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    new Vue({
+      el: '#ignotion-main'
+    })
+  </script>
+</html>

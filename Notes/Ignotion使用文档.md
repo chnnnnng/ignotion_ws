@@ -135,6 +135,19 @@ ignotion -l --name-order
 > 注：模板是一个html文件，位于主题目录下。  
 用户也可以创建自己的模版文件。 
 
+### Front Matter
+
+Front Matter是Markdown文件上方以
+
+```
+---
+---
+```
+划定的区域。
+
+在Front Matter中，你可以指定这篇文章的标题，使之区别于文件名。  
+也可以指定渲染这篇文章所使用的模版。
+
 
 ## 转译
 

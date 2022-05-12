@@ -6,3 +6,5 @@ template: page
 
 # {{ __SITE_NAME__ }}
 ## {{ __SITE_DESCRIPTION__ }}
+
+Find me on [Github](https://github.com/chnnnnng/ignotion)
