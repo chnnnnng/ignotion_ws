@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'iconfont';
-    src: url('iconfont.ttf?t=1652361520305') format('truetype');
+    src: url('iconfont.ttf?t=1652428413911') format('truetype');
   }
 
 .iconfont {
@@ -37,7 +37,6 @@ pre {
     background-color: #424c50;
     border-radius: 20px;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
     line-height: 0.8rem;
     scrollbar-width: none;
     /* Firefox */
@@ -119,13 +118,14 @@ a::after{
 
 p {
     font-size: 1rem;
-    margin-bottom: 1.3rem;
 }
 
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
     margin: 1.4rem 0 .5rem;
     font-weight: inherit;
 }
@@ -271,7 +271,7 @@ hr {
 html {
     border: 10px solid #9d2933;
     font-size: 22px;
-    background-color: #f0f0f4;
+    background-color: #9d2933;
     overflow-y: hidden;
 }
 
@@ -280,14 +280,13 @@ body {
     width: 100%;
     max-width: 100%;
     color: #5d513c;
+    background-color: #f0f0f4;
+    border-radius: 2rem;
     font-family: serif;
     line-height: 1.85;
     height: calc(100vh - 20px);
     display: flex;
     flex-direction: column;
-    animation: fadeInAnimation ease 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 @keyframes fadeInAnimation {
@@ -308,6 +307,14 @@ body {
     background: #eacd7650;
 }
 
+
+#ignotion-main {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
 #ignotion-header {
     text-align: left;
     line-height: 1;
@@ -318,14 +325,6 @@ body {
     background-color: #fffbf0;
     color: #9d2933;
 }
-
-#ignotion-main {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    overflow-y: auto;
-}
-
 
 .ignotion_navigation_sub {
     background-color: #ffffff;
@@ -339,7 +338,6 @@ span.ignotion_navigation_category_name {
     font-weight: bolder;
     font-size: 1.121rem;
     border-bottom: 1px solid #5d513c;
-    padding-bottom: 20px;
     margin-bottom: 10px;
 }
 
@@ -365,8 +363,15 @@ span.ignotion_navigation_category_name::before{
     height: 100%;
     padding: 2rem 2rem 0px 1rem;
     box-sizing: border-box;
+
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
+#ignotion-content img{
+    width: fit-content;
+}
 
 #ignotion-sider {
     flex: 1;
@@ -398,6 +403,14 @@ span.ignotion_navigation_category_name::before{
     position: absolute;
     left: -1rem;
     padding-left: 0.5rem;
+    transition: all 0.6s;
+    -moz-transition: all 0.6s; /* Firefox 4 */
+    -webkit-transition: all 0.6s; /* Safari 和 Chrome */
+    -o-transition: all 0.6s; /* Opera */
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #ignotion-sider-toc>.ignotion-toc a::after{
@@ -511,36 +524,63 @@ span.ignotion_navigation_category_name::before{
     #ignotion-sider-toc{
         display: none;
     }
-
-    #ignotion-content>.el-backtop{
-        display:hidden;
-    }
-
-    #ignotion-main>.el-backtop{
-        display:unset;
-    }
 }
 
-.el-backtop{
+.ignotion-backtop{
+    position: fixed;
+    z-index: 999;
     color: #fff;
     background-color: #c3272b;
     height: 3rem;
     width: 3rem;
     border-bottom: 10px solid #60281e80;
     border-radius: 0px;
-    right: 2rem!important;
-    bottom: 2rem!important;
+    right: 2rem;
+    bottom: -6rem;
     text-align: center;
     box-sizing: border-box;
     font-size: 1rem;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari 和 Chrome */
+    -o-transition: all 1s; /* Opera */
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 4rem;
 }
 
-.el-backtop>i{
-    line-height: 3rem;
-}
-
-.el-backtop:hover{
+.ignotion-backtop:hover{
     background-color: #b02126;
-    border-bottom: 10px solid #683930;
+    border-bottom: 10px solid #57322a;
+}
+
+.ignotion-task-done{
+    color: #21a675;
+}
+.ignotion-task-undone{
+    color: #4b5cc4;
+}
+.ignotion-task-done::marker,
+.ignotion-task-undone::marker{
+    content: none;
+}
+.ignotion-task-done::before{
+    content: "\ebf1";
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #21a675;;
+    margin-right: 0.5rem;
+}
+
+.ignotion-task-undone::before{
+    content: "\ebf0";
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #4b5cc4;
+    margin-right: 0.5rem;
 }

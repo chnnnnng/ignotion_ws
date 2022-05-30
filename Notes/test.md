@@ -79,10 +79,16 @@ function method()
 }
 ```
 
-## 链接
+## 任务
 
-行内连接 [CHNG](https://chng.fun/) 的链接
+- [x] 努力**干饭**
+- [ ] 学习
+
 
 ## 图片
 
-![{{ __SITE_NAME__ }}_LOGO]({{ __RES__ }}/imgs/logo.png)
+![{{ __SITE_NAME__ }}_LOGO]({{ __RES__ }}imgs/logo.png)
+
+## 链接
+
+行内连接 [CHNG](https://chng.fun/) 的链接

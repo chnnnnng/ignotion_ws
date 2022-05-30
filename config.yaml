@@ -4,13 +4,13 @@
 # 站点名称
 SITE_NAME: CHNG Ignotion
 # 站点描述
-SITE_DESCRIPTION: A Handy Markdown Blog.
+SITE_DESCRIPTION: 一个基于Markdown语法的高效写作工具链
 # 站点版权信息
 SITE_COPYRIGHT: Copyright ©2022 CHNG. 苏ICP备19058878号.
 
 ### 作者信息
 # 作者姓名
-AUTHOR_NAME: Chen.Y
+AUTHOR_NAME: Chng
 # 作者邮箱
 AUTHOR_EMAIL: 596552206@qq.com
 # 作者介绍

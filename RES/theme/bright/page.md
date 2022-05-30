@@ -1,6 +1,7 @@
 ---
 title: 
 template: page
+TOC: yes
 ---
 ## 嗨!
 
